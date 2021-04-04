@@ -1,0 +1,4 @@
+/node_modules/**
+/target/**
+/dist/**
+/tests/unit/coverage/**

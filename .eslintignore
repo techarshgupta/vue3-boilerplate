@@ -1,0 +1,5 @@
+/dist/
+/tests/unit/coverage/
+/node/
+/node_modules/
+/coverage/
