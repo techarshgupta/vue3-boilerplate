@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["contact"],{b8fa:function(n,t,a){"use strict";function c(n,t,a,c,e,o){return"Contact Me"}a.r(t);var e=a("7a23"),o=Object(e["h"])({name:"Contact"});o.render=c;t["default"]=o}}]);
-//# sourceMappingURL=contact.960805ef.js.map
