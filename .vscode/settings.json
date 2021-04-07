@@ -18,7 +18,6 @@
   "files.exclude": {
     "**/*.log": true,
     "**/*.log*": true,
-    "**/dist": true,
     "**/coverage": true
   },
   "files.associations": {
@@ -32,7 +31,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.All": true,
+    "source.fixAll": true,
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
@@ -40,14 +39,14 @@
   "eslint.options": {
     "extensions": [".html", ".js", ".vue", ".ts"]
   },
-  "eslint.validate": ["javascript", "javascriptreact", "vue", "vue-html", "html"],
-  "vetur.format.enable": false,
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "vue-html", "html", "typescript"],
+  "vetur.format.enable": true,
 
   // ===
   // HTML
   // ===
 
-  "html.format.enable": false,
+  "html.format.enable": true,
   "vetur.validation.template": false,
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {

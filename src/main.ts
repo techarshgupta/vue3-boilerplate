@@ -9,7 +9,8 @@ import store from './store';
 import '@/assets/css/index.scss';
 
 const app = createApp(App);
-
 app.use(store);
 app.use(router);
-app.mount('#app');
+router.isReady().then(() => {
+  app.mount('#app');
+});
