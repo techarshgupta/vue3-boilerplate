@@ -1,13 +1,14 @@
 import { GetterTree } from 'vuex';
+import { Todo } from '@/model/Todo.model';
 import { State } from './state';
 import { RootState } from '@/store';
 
 export type Getters = {
-  doubledCounter(state: State): number;
+  todos(state: State): Todo[];
 };
 
 export const getters: GetterTree<State, RootState> & Getters = {
-  doubledCounter: (state) => {
-    return state.count * 2;
+  todos(state: State): Todo[] {
+    return state.todos;
   },
 };

@@ -11,13 +11,14 @@
 *.sass text eol=lf
 *.json text eol=lf
 *.md text eol=lf
+*.yml text eol=lf
 
 # config files
 
 .browserslistrc text eol=lf
 .editorconfig text eol=lf
 .eslintignore text eol=lf
-.gitattributes
-.gitignore
-.prettierignore
-.stylelintignore
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.prettierignore text eol=lf
+.stylelintignore text eol=lf

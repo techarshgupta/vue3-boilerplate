@@ -3,17 +3,19 @@
     <div>
       <input type="button" value="Logout" @click="logout" />
     </div>
+    {{ todoList }}
     <img alt="Vue logo" class="m-auto" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-import { ActionTypes } from '@/store/counter/counter.types';
+import { useStore } from '@/store';
+import { Todo } from '@/model/Todo.model';
+import { Counter } from '@/model/Counter.model';
 
 export default defineComponent({
   name: 'Home',
@@ -23,14 +25,24 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const store = useStore();
-    // store.commit(`counter/${MutationTypes.SET_COUNTER}`, 100);
-    store.dispatch(`counter/${ActionTypes.GET_COUNTER}`, 132);
-    console.log('🚀 ~ file: Home.vue ~ line 25 ~ setup ~ store', store);
+    console.log('🚀 store', store);
+    const t: Todo = {
+      id: 12,
+      desc: 'ewfwef',
+      done: false,
+    };
+    const temp: Counter = {
+      count: 12,
+    };
+    store.dispatch('todo/addTodo', t);
+    store.dispatch('counter/addCounter', temp);
+    const todoList = computed(() => store.state.todo.todos);
     const logout = () => {
       localStorage.removeItem('token');
       router.replace('/signout');
     };
     return {
+      todoList,
       logout,
     };
   },

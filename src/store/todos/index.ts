@@ -14,9 +14,9 @@ type Namespaced<T, N extends string> = {
   [P in keyof T & string as `${N}/${P}`]: T[P];
 };
 
-export type NamespacedMutations = Namespaced<Actions, 'counter'>;
+export type NamespacedMutations = Namespaced<Actions, 'todo'>;
 
-export type CounterStore<S = State> = Omit<VuexStore<S>, 'getters' | 'commit' | 'dispatch'> & {
+export type TodoStore<S = State> = Omit<VuexStore<S>, 'getters' | 'commit' | 'dispatch'> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
     key: K,
     payload: P,

@@ -1,5 +1,9 @@
-export const state = {
-  counter: 0,
-};
+// import { Counter } from '@/model/Counter.model';
 
-export type State = typeof state;
+export interface State {
+  count: number;
+}
+
+export const state: State = {
+  count: 0,
+};

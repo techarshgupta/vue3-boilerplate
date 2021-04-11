@@ -1,13 +1,13 @@
+import { Counter } from '@/model/Counter.model';
 import { MutationTree } from 'vuex';
-import { MutationTypes } from './counter.types';
 import { State } from './state';
 
 export type Mutations<S = State> = {
-  [MutationTypes.SET_COUNTER](state: S, payload: number): void;
+  ADD_COUNTER(state: S, count: Counter): void;
 };
 
 export const mutations: MutationTree<State> & Mutations = {
-  [MutationTypes.SET_COUNTER](state, payload: number) {
-    state.counter = payload;
+  ADD_COUNTER(state: State, count: Counter) {
+    state.count = count.count;
   },
 };

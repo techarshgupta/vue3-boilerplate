@@ -1,18 +1,22 @@
-import { ActionTree, Commit } from 'vuex';
+import { ActionTree, ActionContext } from 'vuex';
+import { RootState } from '@/store';
 import { State } from './state';
-import { ActionTypes, MutationTypes } from './counter.types';
+import { Mutations } from './mutations';
+import { Counter } from '@/model/Counter.model';
+
+type AugmentedActionContext = {
+  commit<K extends keyof Mutations>(
+    key: K,
+    payload: Parameters<Mutations[K]>[1]
+  ): ReturnType<Mutations[K]>;
+} & Omit<ActionContext<State, RootState>, 'commit'>;
 
 export interface Actions {
-  [ActionTypes.GET_COUNTER]({ commit }: { commit: Commit }, payload: number): Promise<number>;
+  addCounter({ commit }: AugmentedActionContext, count: Counter): void;
 }
 
-export const actions: ActionTree<State, State> & Actions = {
-  [ActionTypes.GET_COUNTER]({ commit }, data) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        commit(MutationTypes.SET_COUNTER, data);
-        resolve(data);
-      }, 500);
-    });
+export const actions: ActionTree<State, RootState> & Actions = {
+  addCounter({ commit }: AugmentedActionContext, count: Counter): void {
+    commit('ADD_COUNTER', count);
   },
 };
