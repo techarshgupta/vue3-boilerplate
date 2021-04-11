@@ -1,10 +1,4 @@
-import {
-  createRouter,
-  createWebHistory,
-  NavigationGuardNext,
-  RouteLocationNormalized,
-  RouteRecordRaw,
-} from 'vue-router';
+import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 import { globalStartupGuard, authGuard } from '@/helpers/global/session-helper';
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
+    component: () => import(/* webpackChunkName: "dashboard" */ '../layouts/TheLayout.vue'),
     children: [
       {
         path: '/',
@@ -50,12 +44,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(
-  (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-    globalStartupGuard().then(() => {
-      authGuard(to, from, next);
-    });
-  }
-);
+router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+  globalStartupGuard().then(() => {
+    authGuard(to, from, next);
+  });
+});
 
 export default router;

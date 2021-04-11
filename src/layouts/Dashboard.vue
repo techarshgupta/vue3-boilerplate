@@ -8,7 +8,6 @@
       <component :is="Component" />
     </transition>
   </router-view>
-  <!-- <router-view></router-view> -->
 </template>
 
 <script lang="ts">
@@ -18,15 +17,3 @@ export default defineComponent({
   name: 'Dashboard',
 });
 </script>
-
-<style lang="scss">
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease-out;
-}
-</style>

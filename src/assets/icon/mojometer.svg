@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 34</title>
+    <g id="Pulse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01_01_Overview" transform="translate(-33.000000, -306.000000)">
+            <g id="Group-34" transform="translate(33.000000, 306.000000)">
+                <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                <g id="Group-5" transform="translate(1.000000, 3.000000)" stroke="#415971" stroke-width="1.5">
+                    <path d="M17.4831905,12.4997 L21.4767143,12.4997 C21.4767143,5.8733 16.7854762,0.4997 11.0005238,0.4997 C5.21452381,0.4997 0.524333333,5.8733 0.524333333,12.4997 L4.51890476,12.4997" id="Stroke-1" stroke-linecap="round"></path>
+                    <path d="M8.8198,12.6531 C9.29018095,11.8471 12.7682762,9.0331 13.3538952,8.5611 C13.3832286,8.5381 13.4272286,8.5611 13.4219905,8.5971 C13.3098952,9.3211 12.6299905,13.6241 12.1596095,14.4301 C11.6452286,15.3101 10.4813238,15.6261 9.55941905,15.1351 C8.63646667,14.6451 8.30541905,13.5331 8.8198,12.6531 Z" id="Stroke-3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

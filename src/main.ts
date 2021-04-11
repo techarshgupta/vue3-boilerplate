@@ -6,7 +6,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { store } from './store';
-import '@/assets/css/index.scss';
+import '@/assets/style/tailwind.scss';
+import '@/assets/style/app.scss';
 
 const app = createApp(App);
 app.use(store);
