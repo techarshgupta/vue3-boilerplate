@@ -6,6 +6,19 @@
     {{ todoList }}
     <img alt="Vue logo" class="m-auto" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <modal
+      v-if="modalVisible"
+      :isVisible="modalVisible"
+      @cancel="modalVisible = false"
+      @confirm="modalVisible = false"
+    >
+      <template #title>
+        <p>Modal Title Example</p>
+      </template>
+      <template #body>
+        <p>Some text for the modal body, this will show up in the middle of the modal.</p>
+      </template>
+    </modal>
     <section class="text-gray-600 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
@@ -15,7 +28,9 @@
           </p>
           <div class="flex mx-auto border-2 border-indigo-500 rounded overflow-hidden mt-6">
             <button class="py-1 px-4 bg-indigo-500 text-white focus:outline-none">Monthly</button>
-            <button class="py-1 px-4 focus:outline-none">Annually</button>
+            <button class="py-1 px-4 focus:outline-none" @click="modalVisible = true">
+              Annually
+            </button>
           </div>
         </div>
         <div class="flex flex-wrap -m-4">
@@ -446,8 +461,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue';
+import Modal from '@/components/global/TheModal.vue';
 import { useRouter } from 'vue-router';
 import { useStore } from '@/store';
 import { Todo } from '@/model/Todo.model';
@@ -457,10 +473,12 @@ export default defineComponent({
   name: 'Home',
   components: {
     HelloWorld,
+    Modal,
   },
   setup() {
     const router = useRouter();
     const store = useStore();
+    const modalVisible = ref(false);
     const t: Todo = {
       id: 12,
       desc: 'ewfwef',
@@ -479,6 +497,7 @@ export default defineComponent({
     return {
       todoList,
       logout,
+      modalVisible,
     };
   },
 });

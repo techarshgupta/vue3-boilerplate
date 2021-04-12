@@ -10,7 +10,7 @@
         <div
           v-if="showLogOut"
           @click="showLogOut = false"
-          class="fixed inset-0 h-full w-full cursor-default"
+          class="fixed inset-0 bg-black opacity-25 h-full w-full cursor-default"
         ></div>
         <span
           v-if="user"
