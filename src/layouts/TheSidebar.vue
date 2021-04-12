@@ -1,11 +1,23 @@
 <template>
-  <aside ref="sidebar" class="sidebar fixed bg-white flex flex-col left-0 min-h-screen top-0 px-4 shadow-2xl z-20" :class="navExpand ? 'click-collapse' : 'items-center hover-collapse'">
+  <aside
+    ref="sidebar"
+    class="sidebar fixed bg-white flex flex-col left-0 min-h-screen top-0 px-4 shadow-2xl z-20"
+    :class="navExpand ? 'click-collapse' : 'items-center hover-collapse'"
+  >
     <transition name="slide">
-      <div class="flex my-8 items-center cursor-pointer h-8" :class="navExpand ? 'justify-between' : 'justify-around'" @click="toggleNavbar">
+      <div
+        class="flex my-8 items-center cursor-pointer h-8"
+        :class="navExpand ? 'justify-between' : 'justify-around'"
+        @click="toggleNavbar"
+      >
         <transition name="slide">
           <img class="w-12" src="@/assets/logo/hg.png" />
         </transition>
-        <img class="h-4 w-4 absolute right-0 mb-3" :class="{ 'transform rotate-180 relative': navExpand }" src="@/assets/icon/arrow-right.svg" />
+        <img
+          class="h-4 w-4 absolute right-0 mb-3"
+          :class="{ 'transform rotate-180 relative': navExpand }"
+          src="@/assets/icon/arrow-right.svg"
+        />
       </div>
     </transition>
     <nav class="inline-flex flex-col space-y-2 bg-white">
@@ -13,7 +25,10 @@
         v-for="(link, index) in navLinks"
         :key="index"
         class="flex items-center text-gray-600 py-2 cursor-pointer hover:bg-gray-100"
-        :class="[{ 'bg-indigo-100 text-indigo-500': selected == index }, [navExpand ? 'pl-2 pr-6 rounded-lg' : 'px-2 rounded-lg']]"
+        :class="[
+          { 'bg-indigo-100 text-indigo-500': selected == index },
+          [navExpand ? 'pl-2 pr-6 rounded-lg' : 'px-2 rounded-lg'],
+        ]"
         @click="selected = index"
       >
         <img :src="link.icon" class="w-8 h-8 p-1" :class="{ 'mr-4': navExpand }" />

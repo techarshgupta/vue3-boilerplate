@@ -8,63 +8,76 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
-    "@vue/typescript/recommended",
-    "@vue/prettier",
-    "@vue/prettier/@typescript-eslint",
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/typescript/recommended',
+    '@vue/prettier',
+    '@vue/prettier/@typescript-eslint',
   ],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
     ecmaVersion: 2020,
   },
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     eqeqeq: [
-      "error",
-      "always",
+      'error',
+      'always',
       {
-        null: "always",
+        null: 'always',
       },
     ],
-    "prefer-const": ["error", {
-      "destructuring": "any",
-      "ignoreReadBeforeAssign": false
-    }],
-    quotes: ["error", "single", { avoidEscape: true }],
-    "comma-dangle": ["error", "only-multiline"],
-
-    "max-len": [
-      "error",
+    'prefer-const': [
+      'error',
       {
-        code: 200,
+        destructuring: 'any',
+        ignoreReadBeforeAssign: false,
+      },
+    ],
+    quotes: ['error', 'single', { avoidEscape: true }],
+    'comma-dangle': ['error', 'only-multiline'],
+
+    'max-len': [
+      'warn',
+      {
+        code: 100,
         tabWidth: 2,
         ignoreComments: true,
         ignoreUrls: true,
         ignoreTemplateLiterals: true,
         ignoreRegExpLiterals: true,
-      }
+      },
     ],
 
-    "lines-between-class-members": [
-      "error",
-      "always",
+    'lines-between-class-members': [
+      'error',
+      'always',
       {
         exceptAfterSingleLine: true,
       },
     ],
 
     // vue rules
-    "vue/custom-event-name-casing": "off",
-    "vue/valid-v-slot": "warn",
-    "vue/no-mutating-props": "warn",
+    'vue/custom-event-name-casing': 'off',
+    'vue/valid-v-slot': 'warn',
+    'vue/no-mutating-props': 'warn',
+    'vue/html-indent': [
+      'error',
+      2,
+      {
+        attribute: 1,
+        baseIndent: 1,
+        closeBracket: 0,
+        alignAttributesVertically: true,
+      },
+    ],
 
-    "no-plusplus": "off",
-    "no-var": "error",
-    "no-use-before-define": ["error", {"functions": true, "classes": true}]
+    'no-plusplus': 'off',
+    'no-var': 'error',
+    'no-use-before-define': ['error', { functions: true, classes: true }],
   },
 };

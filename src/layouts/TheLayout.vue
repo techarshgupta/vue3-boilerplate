@@ -2,7 +2,10 @@
   <main>
     <sidebar :navExpand="navExpand" @toggleNavbar="navExpand = !navExpand" />
     <div class="wrapper" :class="navExpand ? 'click-collapse' : 'hover-collapse'">
-      <div class="header fixed z-50 w-full" :class="navExpand ? 'click-collapse' : 'hover-collapse'">
+      <div
+        class="header fixed z-50 w-full"
+        :class="navExpand ? 'click-collapse' : 'hover-collapse'"
+      >
         <navbar />
       </div>
       <div class="body pt-16 px-4">

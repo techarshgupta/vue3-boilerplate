@@ -1,4 +1,10 @@
-import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
+import {
+  createRouter,
+  createWebHistory,
+  NavigationGuardNext,
+  RouteLocationNormalized,
+  RouteRecordRaw,
+} from 'vue-router';
 import { globalStartupGuard, authGuard } from '@/helpers/global/session-helper';
 
 const routes: Array<RouteRecordRaw> = [
@@ -44,10 +50,12 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  globalStartupGuard().then(() => {
-    authGuard(to, from, next);
-  });
-});
+router.beforeEach(
+  (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+    globalStartupGuard().then(() => {
+      authGuard(to, from, next);
+    });
+  }
+);
 
 export default router;
