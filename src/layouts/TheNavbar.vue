@@ -1,7 +1,15 @@
 <template>
   <div class="flex justify-between select-none bg-white shadow-sm h-16">
-    <div class="overflow-hidden p-2 w-16">
-      <img class="w-full h-full" src="@/assets/logo/hg.png" />
+    <div class="flex">
+      <hamburger
+        v-if="isMobile"
+        :is-active="sidebar.opened"
+        class="cursor-pointer flex items-center"
+        @toggleClick="toggleSideBar"
+      />
+      <div class="overflow-hidden p-2 w-16">
+        <img class="w-full h-full" src="@/assets/logo/hg.png" />
+      </div>
     </div>
     <div class="flex justify-around items-center mx-4">
       <img class="h-6" src="@/assets/icon/settings.svg" />
@@ -32,12 +40,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onUnmounted, ref } from 'vue';
+import { useStore } from '@/store';
+import { computed, defineComponent, onUnmounted, ref } from 'vue';
+import Hamburger from './TheHamBurger.vue';
 
 export default defineComponent({
   name: 'TheNavbar',
+  components: {
+    Hamburger,
+  },
   setup() {
     const showLogOut = ref(false);
+    const store = useStore();
+    const sidebar = computed(() => store.state.app.sidebar);
+    const isMobile = computed(() => store.state.app.device === 'mobile');
     const user = ref({
       firstName: 'Harsh',
       lastName: 'Gupta',
@@ -51,9 +67,15 @@ export default defineComponent({
     onUnmounted(() => {
       document.removeEventListener('keydown', handleEscape);
     });
+    const toggleSideBar = () => {
+      store.dispatch('app/toggleSideBar');
+    };
     return {
       showLogOut,
+      sidebar,
+      isMobile,
       user,
+      toggleSideBar,
     };
   },
 });

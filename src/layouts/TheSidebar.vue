@@ -2,7 +2,7 @@
   <aside
     ref="sidebar"
     class="sidebar fixed bg-white flex flex-col left-0 min-h-screen top-0 px-4 shadow-2xl z-20"
-    :class="navExpand ? 'click-collapse' : 'items-center hover-collapse'"
+    :class="navExpand || isMobile ? 'click-collapse' : 'items-center hover-collapse'"
   >
     <transition name="slide">
       <div
@@ -14,6 +14,7 @@
           <img class="w-12" src="@/assets/logo/hg.png" />
         </transition>
         <img
+          v-if="!isMobile"
           class="h-4 w-4 absolute right-0 mb-3"
           :class="{ 'transform rotate-180 relative': navExpand }"
           src="@/assets/icon/arrow-right.svg"
@@ -27,19 +28,24 @@
         class="flex items-center text-gray-600 py-2 cursor-pointer hover:bg-gray-100"
         :class="[
           { 'bg-indigo-100 text-indigo-500': selected == index },
-          [navExpand ? 'pl-2 pr-6 rounded-lg' : 'px-2 rounded-lg'],
+          [navExpand || isMobile ? 'pl-2 pr-6 rounded-lg' : 'px-2 rounded-lg'],
         ]"
         @click="selected = index"
       >
-        <img :src="link.icon" class="w-8 h-8 p-1" :class="{ 'mr-4': navExpand }" />
-        <span v-html="link.text" class="font-medium select-none" v-if="navExpand"></span>
+        <img :src="link.icon" class="w-8 h-8 p-1" :class="{ 'mr-4': navExpand || isMobile }" />
+        <span
+          v-html="link.text"
+          class="font-medium select-none"
+          v-if="navExpand || isMobile"
+        ></span>
       </a>
     </nav>
   </aside>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { useStore } from '@/store';
+import { computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'TheSidebar',
@@ -81,12 +87,17 @@ export default defineComponent({
         text: 'Create Task',
       },
     ]);
+    const store = useStore();
+    const isMobile = computed(() => {
+      return store.state.app.device === 'mobile';
+    });
     const toggleNavbar = () => {
       emit('toggleNavbar');
     };
     return {
       selected,
       navLinks,
+      isMobile,
       toggleNavbar,
     };
   },

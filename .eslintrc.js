@@ -78,6 +78,5 @@ module.exports = {
 
     'no-plusplus': 'off',
     'no-var': 'error',
-    'no-use-before-define': ['error', { functions: true, classes: true }],
   },
 };
