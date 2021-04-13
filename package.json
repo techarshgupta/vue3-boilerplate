@@ -56,7 +56,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
+      "vue-cli-service lint --max-warnings 0",
       "stylelint",
       "git add"
     ]
