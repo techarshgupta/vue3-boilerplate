@@ -13,7 +13,10 @@
       >
         <navbar />
       </div>
-      <div class="body pt-16 px-4">
+      <div
+        class="body pt-16 px-4"
+        :class="device === 'mobile' && sidebar.opened ? 'fixed overflow-hidden' : ''"
+      >
         <div @click="toggleSidebar">open</div>
         <dashboard />
       </div>
