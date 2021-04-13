@@ -41,17 +41,17 @@ module.exports = {
     quotes: ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'only-multiline'],
 
-    'max-len': [
-      'warn',
-      {
-        code: 100,
-        tabWidth: 2,
-        ignoreComments: true,
-        ignoreUrls: true,
-        ignoreTemplateLiterals: true,
-        ignoreRegExpLiterals: true,
-      },
-    ],
+    // 'max-len': [
+    //   'warn',
+    //   {
+    //     code: 100,
+    //     tabWidth: 2,
+    //     ignoreComments: true,
+    //     ignoreUrls: true,
+    //     ignoreTemplateLiterals: true,
+    //     ignoreRegExpLiterals: true,
+    //   },
+    // ],
 
     'lines-between-class-members': [
       'error',
@@ -73,6 +73,24 @@ module.exports = {
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
+      },
+    ],
+    'vue/max-len': [
+      'error',
+      {
+        code: 100,
+        template: 100,
+        tabWidth: 2,
+        comments: 100,
+        ignorePattern: '',
+        ignoreComments: true,
+        ignoreTrailingComments: false,
+        ignoreUrls: true,
+        ignoreStrings: false,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+        ignoreHTMLAttributeValues: true,
+        ignoreHTMLTextContents: false,
       },
     ],
 
